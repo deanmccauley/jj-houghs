@@ -3364,3 +3364,35 @@ footer {
         margin-bottom: 1rem;
     }
 }
+/* ========= TRIPADVISOR LOGO STYLES ========= */
+.tripadvisor-logo {
+    width: 26px;
+    height: 26px;
+    transition: var(--transition);
+    border-radius: 2px;
+}
+
+.tripadvisor-link:hover .tripadvisor-logo {
+    transform: scale(1.1);
+}
+
+/* If your logo is colored and needs to be white: */
+.tripadvisor-logo.colored-to-white {
+    filter: brightness(0) invert(1);
+}
+
+/* If your logo is white and needs gold on hover: */
+.tripadvisor-logo.white-to-gold:hover {
+    filter: brightness(0) invert(0.8) sepia(1) saturate(5) hue-rotate(-30deg);
+}
+/* Atmosphere Image */
+.atmosphere-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.atmosphere-image .image-frame {
+    height: 350px;
+}
