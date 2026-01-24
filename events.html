@@ -366,5 +366,60 @@
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="js/script.js"></script>
+
+      <<script>
+    // Fix for events page FAQ - Smooth Accordion Style
+    document.addEventListener('DOMContentLoaded', function() {
+        const faqContainer = document.querySelector('.music-faq');
+        if (!faqContainer) return;
+        
+        const faqQuestions = faqContainer.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                // Close all other FAQs first
+                faqQuestions.forEach(otherQuestion => {
+                    if (otherQuestion !== this) {
+                        const otherAnswer = otherQuestion.nextElementSibling;
+                        const otherIcon = otherQuestion.querySelector('i');
+                        
+                        otherAnswer.classList.remove('active');
+                        otherQuestion.classList.remove('active');
+                        
+                        // Reset other icons
+                        if (otherIcon) {
+                            otherIcon.classList.remove('fa-chevron-up');
+                            otherIcon.classList.add('fa-chevron-down');
+                        }
+                    }
+                });
+                
+                // Toggle current FAQ
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                const isActive = answer.classList.contains('active');
+                
+                if (isActive) {
+                    // Close this one
+                    answer.classList.remove('active');
+                    this.classList.remove('active');
+                    if (icon) {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                } else {
+                    // Open this one
+                    answer.classList.add('active');
+                    this.classList.add('active');
+                    if (icon) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    }
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
