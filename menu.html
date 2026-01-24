@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu & Drinks | JJ Hough's Singing Pub</title>
+    <meta name="description" content="Traditional Irish pub food and drinks at JJ Hough's. Enjoy hearty meals Thursday to Sunday and our extensive selection of Irish whiskeys, beers, and spirits.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:wght@400;500;600&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">JJ Hough's</span>
+                <span class="logo-sub">Singing Pub</span>
+            </a>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="menu.html" class="active">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:0879357312" class="nav-phone"><i class="fas fa-phone"></i> 087 935 7312</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero hero-menu">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Food & Drink</h1>
+            <p class="hero-subtitle">Traditional Irish pub fare and an extensive selection of drinks</p>
+        </div>
+    </section>
+
+    <!-- Menu Navigation -->
+    <section class="menu-navigation">
+        <div class="container">
+            <div class="menu-categories">
+                <button class="menu-category-btn active" data-category="food">Food Menu</button>
+                <button class="menu-category-btn" data-category="drinks">Drinks</button>
+                <button class="menu-category-btn" data-category="whiskey">Irish Whiskey</button>
+                <button class="menu-category-btn" data-category="beer">Beers & Ciders</button>
+                <button class="menu-category-btn" data-category="specials">Today's Specials</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Food Menu -->
+    <section class="food-menu" id="foodSection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Traditional Irish Food</h2>
+                <p class="section-subtitle">Served Thursday to Sunday during pub hours</p>
+                <div class="menu-notice">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Our menu changes regularly based on seasonal availability. Please ask staff about daily specials.</p>
+                </div>
+            </div>
+            
+            <div class="menu-grid">
+                <div class="menu-category">
+                    <h3 class="category-title">Starters & Soups</h3>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h4>Traditional Irish Soup</h4>
+                            <span class="item-price">€6.50</span>
+                        </div>
+                        <p class="item-description">Hearty vegetable soup with homemade brown bread</p>
+                        <span class="item-tag">Vegetarian</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h4>Prawn Cocktail</h4>
+                            <span class="item-price">€8.95</span>
+                        </div>
+                        <p class="item-description">Fresh prawns with Marie Rose sauce, lettuce, and brown bread</p>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h4>Chicken Liver Pâté</h4>
+                            <span class="item-price">€7.95</span>
+                        </div>
+                        <p class="item-description">Served with toast and homemade chutney</p>
+                    </div>
+                </div>
+                
+                <div class="menu-category">
+                    <h3 class="category-title">Main Courses</h3>
+                    <div class="menu-item featured">
+                        <div class="item-header">
+                            <h4>JJ Hough's Beef & Guinness Stew</h4>
+                            <span class="item-price">€16.95</span>
+                        </div>
+                        <p class="item-description">Tender beef slow-cooked in Guinness with carrots, potatoes, and herbs. Served with mashed potatoes.</p>
+                        <span class="item-tag">Signature Dish</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h4>Fish & Chips</h4>
+                            <span class="item-price">€15.50</span>
+                        </div>
+                        <p class="item-description">Beer-battered cod, hand-cut chips, mushy peas, and tartar sauce</p>
+                        <span class="item-tag">Fresh Daily</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h4>Traditional Irish Breakfast</h4>
+                            <span class="item-price">€12.95</span>
+                        </div>
+                        <p class="item-description">Sausages, bacon, black pudding, white pudding, eggs, tomatoes, and toast</p>
+                        <span class="item-tag">All Day</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h4>Vegetable Shepherd's Pie</h4>
+                            <span class="item-price">€14.50</span>
+                        </div>
+                        <p class="item-description">Lentils and vegetables topped with creamy mashed potatoes</p>
+                        <span class="item-tag">Vegetarian</span>
+                    </div>
+                </div>
+                
+                <div class="menu-category">
+                    <h3 class="category-title">Desserts</h3>
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h4>Apple Crumble</h4>
+                            <span class="item-price">€6.95</span>
+                        </div>
+                        <p class="item-description">Homemade with Irish apples, served with vanilla ice cream or custard</p>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h4>Sticky Toffee Pudding</h4>
+                            <span class="item-price">€7.50</span>
+                        </div>
+                        <p class="item-description">Warm date pudding with toffee sauce and cream</p>
+                        <span class="item-tag">House Special</span>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <div class="item-header">
+                            <h4>Baileys Cheesecake</h4>
+                            <span class="item-price">€7.95</span>
+                        </div>
+                        <p class="item-description">Creamy Baileys-infused cheesecake with chocolate sauce</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-notes">
+                <div class="note">
+                    <i class="fas fa-leaf"></i>
+                    <p>Vegetarian options available - please ask staff</p>
+                </div>
+                <div class="note">
+                    <i class="fas fa-child"></i>
+                    <p>Children's menu available</p>
+                </div>
+                <div class="note">
+                    <i class="fas fa-utensils"></i>
+                    <p>Food served until 9pm Thursday to Sunday</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drinks Menu -->
+    <section class="drinks-menu hidden" id="drinksSection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Drinks Selection</h2>
+                <p class="section-subtitle">Something for every taste</p>
+            </div>
+            
+            <div class="drinks-grid">
+                <div class="drinks-category">
+                    <h3 class="category-title">Draught Beers</h3>
+                    <div class="drinks-item">
+                        <div class="drinks-header">
+                            <h4>Guinness</h4>
+                            <span class="drinks-price">Pint €5.50</span>
+                        </div>
+                        <p class="drinks-description">The perfect pint, poured the traditional way</p>
+                    </div>
+                    
+                    <div class="drinks-item">
+                        <div class="drinks-header">
+                            <h4>Smithwick's Red Ale</h4>
+                            <span class="drinks-price">Pint €5.25</span>
+                        </div>
+                        <p class="drinks-description">Ireland's oldest ale, smooth and malty</p>
+                    </div>
+                    
+                    <div class="drinks-item">
+                        <div class="drinks-header">
+                            <h4>Heineken</h4>
+                            <span class="drinks-price">Pint €5.75</span>
+                        </div>
+                        <p class="drinks-description">Crisp, refreshing lager</p>
+                    </div>
+                    
+                    <div class="drinks-item">
+                        <div class="drinks-header">
+                            <h4>Local Craft Beer</h4>
+                            <span class="drinks-price">Pint €6.00</span>
+                        </div>
+                        <p class="drinks-description">Rotating selection from Irish microbreweries</p>
+                    </div>
+                </div>
+                
+                <div class="drinks-category">
+                    <h3 class="category-title">Bottled Beers & Ciders</h3>
+                    <div class="drinks-item">
+                        <div class="drinks-header">
+                            <h4>Bulmers/Magners</h4>
+                            <span class="drinks-price">Bottle €5.50</span>
+                        </div>
+                        <p class="drinks-description">Irish apple cider</p>
+                    </div>
+                    
+                    <div class="drinks-item">
+                        <div class="drinks-header">
+                            <h4>Corona</h4>
+                            <span class="drinks-price">Bottle €5.75</span>
+                        </div>
+                        <p class="drinks-description">With lime wedge</p>
+                    </div>
+                    
+                    <div class="drinks-item">
+                        <div class="drinks-header">
+                            <h4>Peroni</h4>
+                            <span class="drinks-price">Bottle €6.00</span>
+                        </div>
+                        <p class="drinks-description">Italian premium lager</p>
+                    </div>
+                </div>
+                
+                <div class="drinks-category">
+                    <h3 class="category-title">Spirits & Cocktails</h3>
+                    <div class="drinks-item">
+                        <div class="drinks-header">
+                            <h4>House Spirits</h4>
+                            <span class="drinks-price">€5.00</span>
+                        </div>
+                        <p class="drinks-description">Vodka, Gin, Rum, Whiskey</p>
+                    </div>
+                    
+                    <div class="drinks-item">
+                        <div class="drinks-header">
+                            <h4>Irish Coffee</h4>
+                            <span class="drinks-price">€8.50</span>
+                        </div>
+                        <p class="drinks-description">Jameson, coffee, sugar, fresh cream</p>
+                    </div>
+                    
+                    <div class="drinks-item">
+                        <div class="drinks-header">
+                            <h4>Baileys & Coffee</h4>
+                            <span class="drinks-price">€7.50</span>
+                        </div>
+                        <p class="drinks-description">The perfect after-dinner drink</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Whiskey Collection -->
+    <section class="whiskey-menu hidden" id="whiskeySection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Irish Whiskey Collection</h2>
+                <p class="section-subtitle">One of the finest selections in the Midlands</p>
+            </div>
+            
+            <div class="whiskey-grid">
+                <div class="whiskey-category">
+                    <h3 class="category-title">Single Pot Still</h3>
+                    <div class="whiskey-item">
+                        <h4>Redbreast 12 Year</h4>
+                        <p class="whiskey-description">Rich and complex with spicy, fruity notes</p>
+                        <span class="whiskey-price">€9.50</span>
+                    </div>
+                    
+                    <div class="whiskey-item">
+                        <h4>Green Spot</h4>
+                        <p class="whiskey-description">Mellow and rounded with green apple and spice</p>
+                        <span class="whiskey-price">€8.50</span>
+                    </div>
+                    
+                    <div class="whiskey-item">
+                        <h4>Yellow Spot 12 Year</h4>
+                        <p class="whiskey-description">Aged in bourbon, sherry, and Malaga casks</p>
+                        <span class="whiskey-price">€12.00</span>
+                    </div>
+                </div>
+                
+                <div class="whiskey-category">
+                    <h3 class="category-title">Single Malt</h3>
+                    <div class="whiskey-item">
+                        <h4>Jameson Black Barrel</h4>
+                        <p class="whiskey-description">Triple distilled, twice charred barrels</p>
+                        <span class="whiskey-price">€7.50</span>
+                    </div>
+                    
+                    <div class="whiskey-item">
+                        <h4>Bushmills 10 Year</h4>
+                        <p class="whiskey-description">Single malt from Ireland's oldest distillery</p>
+                        <span class="whiskey-price">€9.00</span>
+                    </div>
+                    
+                    <div class="whiskey-item">
+                        <h4>Teeling Small Batch</h4>
+                        <p class="whiskey-description">Finished in rum casks, smooth and sweet</p>
+                        <span class="whiskey-price">€8.00</span>
+                    </div>
+                </div>
+                
+                <div class="whiskey-category">
+                    <h3 class="category-title">Blended & Special</h3>
+                    <div class="whiskey-item">
+                        <h4>Jameson Original</h4>
+                        <p class="whiskey-description">Ireland's most famous whiskey</p>
+                        <span class="whiskey-price">€6.00</span>
+                    </div>
+                    
+                    <div class="whiskey-item">
+                        <h4>Tullamore D.E.W.</h4>
+                        <p class="whiskey-description">Triple distilled, triple blend</p>
+                        <span class="whiskey-price">€6.50</span>
+                    </div>
+                    
+                    <div class="whiskey-item">
+                        <h4>Powers Gold Label</h4>
+                        <p class="whiskey-description">Spicy and robust traditional Irish</p>
+                        <span class="whiskey-price">€6.00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="whiskey-note">
+                <i class="fas fa-star"></i>
+                <p>Ask our staff about whiskey tasting flights and recommendations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Today's Specials -->
+    <section class="specials-menu hidden" id="specialsSection">
+        <div class="container">
+            <div class="section-header">
+                <h2>Today's Specials</h2>
+                <p class="section-subtitle">Updated daily based on fresh local ingredients</p>
+                <div class="date-display">
+                    <i class="fas fa-calendar-day"></i>
+                    <span id="currentDate">Loading date...</span>
+                </div>
+            </div>
+            
+            <div class="specials-grid">
+                <div class="special-item featured">
+                    <div class="special-badge">Chef's Recommendation</div>
+                    <div class="special-content">
+                        <h3>Slow-cooked Lamb Shank</h3>
+                        <p class="special-description">Tender lamb shank slow-cooked in red wine and herbs, served with creamy mashed potatoes and seasonal vegetables.</p>
+                        <div class="special-price">
+                            <span class="price">€18.95</span>
+                            <span class="includes">Includes side of your choice</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="special-item">
+                    <div class="special-content">
+                        <h3>Seafood Chowder</h3>
+                        <p class="special-description">Creamy chowder with fresh salmon, cod, and mussels. Served with homemade brown bread.</p>
+                        <div class="special-price">
+                            <span class="price">€9.50</span>
+                            <span class="serves">Starter portion</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="special-item">
+                    <div class="special-content">
+                        <h3>Beer & Burger Deal</h3>
+                        <p class="special-description">Irish beef burger with cheese, bacon, and onion rings. Served with hand-cut chips and a pint of Guinness or Smithwick's.</p>
+                        <div class="special-price">
+                            <span class="price">€16.50</span>
+                            <span class="deal">Meal Deal</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="specials-notice">
+                <p><strong>Note:</strong> Today's specials are available while stocks last. Menu changes daily based on fresh local produce availability.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drink of the Month -->
+    <section class="drink-of-month">
+        <div class="container">
+            <div class="drink-feature">
+                <div class="drink-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                </div>
+                <div class="drink-content">
+                    <h2>Drink of the Month</h2>
+                    <h3>Black Bush Old Fashioned</h3>
+                    <p class="drink-description">Our signature cocktail featuring Bushmills Black Bush whiskey, bitters, and orange zest. A modern twist on a classic.</p>
+                    <div class="drink-price">
+                        <span class="price">€12.50</span>
+                        <span class="limited">Limited time only</span>
+                    </div>
+                    <button class="btn-secondary try-cocktail">
+                        <i class="fas fa-cocktail"></i> Try It Today
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dietary Information -->
+    <section class="dietary-info">
+        <div class="container">
+            <div class="section-header">
+                <h2>Dietary Information</h2>
+                <p class="section-subtitle">We cater to various dietary needs</p>
+            </div>
+            
+            <div class="dietary-grid">
+                <div class="dietary-card">
+                    <div class="dietary-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Vegetarian Options</h3>
+                    <p>Several vegetarian dishes available. Please inform staff of any dietary restrictions.</p>
+                </div>
+                
+                <div class="dietary-card">
+                    <div class="dietary-icon">
+                        <i class="fas fa-bread-slice"></i>
+                    </div>
+                    <h3>Gluten-Free</h3>
+                    <p>Gluten-free options available. Please inform staff of allergies.</p>
+                </div>
+                
+                <div class="dietary-card">
+                    <div class="dietary-icon">
+                        <i class="fas fa-allergies"></i>
+                    </div>
+                    <h3>Allergy Awareness</h3>
+                    <p>Please inform our staff of any allergies. We take food safety seriously.</p>
+                </div>
+                
+                <div class="dietary-card">
+                    <div class="dietary-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>Questions?</h3>
+                    <p>Unsure about ingredients? Our staff are happy to assist with menu choices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="menu-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Experience Our Menu</h2>
+                <p>Join us for traditional Irish food and drink in the heart of Banagher</p>
+                <div class="cta-buttons">
+                    <a href="contact.html#food" class="btn-primary">Book a Table</a>
+                    <a href="events.html" class="btn-secondary">View Events</a>
+                </div>
+                <p class="cta-note">Food served Thursday to Sunday during pub hours</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>JJ Hough's Singing Pub</h3>
+                    <p>Banagher's home of traditional Irish music since 1802. Experience authentic craic, great drinks, and live music seven days a week.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/jjhoughs" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="events.html">Events</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="menu.html">Menu</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Main St, Banagher, Co. Offaly</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:0879357312">087 935 7312</a></p>
+                    <p><i class="fas fa-clock"></i> 12:00 PM - 1:00 AM Daily</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Get updates on upcoming sessions and events</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2024 JJ Hough's Singing Pub. All rights reserved.</p>
+                <p class="footer-links">
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

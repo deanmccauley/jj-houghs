@@ -1,0 +1,780 @@
+// ========= GLOBAL FUNCTIONS =========
+
+// Mobile Navigation Toggle
+const mobileToggle = document.getElementById('mobileToggle');
+const navLinks = document.getElementById('navLinks');
+
+if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        mobileToggle.innerHTML = navLinks.classList.contains('active') 
+            ? '<i class="fas fa-times"></i>' 
+            : '<i class="fas fa-bars"></i>';
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+    });
+}
+
+// Navbar scroll effect
+const mainNav = document.querySelector('.main-nav');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        mainNav.classList.add('scrolled');
+    } else {
+        mainNav.classList.remove('scrolled');
+    }
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
+// Newsletter form submission
+const newsletterForms = document.querySelectorAll('.newsletter-form');
+newsletterForms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const emailInput = form.querySelector('input[type="email"]');
+        const email = emailInput.value;
+        
+        if (email) {
+            // Show success feedback
+            const button = form.querySelector('button');
+            const originalHTML = button.innerHTML;
+            
+            button.innerHTML = '<i class="fas fa-check"></i>';
+            button.style.background = '#10B981';
+            
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.background = '';
+            }, 2000);
+            
+            emailInput.value = '';
+            console.log('Newsletter subscription:', email);
+        }
+    });
+});
+
+// Scroll animations
+const scrollObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            
+            // Stagger children animations
+            if (entry.target.classList.contains('services-grid') || 
+                entry.target.classList.contains('values-grid') ||
+                entry.target.classList.contains('team-grid')) {
+                const children = entry.target.children;
+                Array.from(children).forEach((child, index) => {
+                    child.style.transitionDelay = `${index * 0.1}s`;
+                });
+            }
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+// ========= EVENTS PAGE FUNCTIONS =========
+
+// Events Calendar Functionality
+const calendarEvents = [
+    { date: '2024-03-01', title: 'March Session Start', type: 'music' },
+    { date: '2024-03-08', title: "Women's Day Special", type: 'special' },
+    { date: '2024-03-15', title: 'St. Patrick\'s Festival', type: 'music' },
+    { date: '2024-03-16', title: 'St. Patrick\'s Festival', type: 'music' },
+    { date: '2024-03-17', title: 'St. Patrick\'s Day', type: 'special' },
+    { date: '2024-03-22', title: 'Music Workshop', type: 'special' },
+    { date: '2024-03-25', title: 'Traditional Food Night', type: 'food' },
+    { date: '2024-03-29', title: 'Easter Weekend Start', type: 'music' },
+    { date: '2024-03-30', title: 'Easter Music Marathon', type: 'music' },
+    { date: '2024-03-31', title: 'Easter Sunday Roast', type: 'food' }
+];
+
+function generateCalendar(year, month) {
+    const calendarGrid = document.getElementById('calendarGrid');
+    if (!calendarGrid) return;
+    
+    calendarGrid.innerHTML = '';
+    
+    // Day headers
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    days.forEach(day => {
+        const dayHeader = document.createElement('div');
+        dayHeader.className = 'calendar-day day-header';
+        dayHeader.textContent = day;
+        calendarGrid.appendChild(dayHeader);
+    });
+    
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    const startDay = firstDay.getDay();
+    
+    const today = new Date();
+    const isToday = (day) => 
+        day === today.getDate() && 
+        month === today.getMonth() && 
+        year === today.getFullYear();
+    
+    // Previous month days
+    const prevMonthLastDay = new Date(year, month, 0).getDate();
+    for (let i = startDay - 1; i >= 0; i--) {
+        const day = document.createElement('div');
+        day.className = 'calendar-day other-month';
+        day.innerHTML = `<span class="day-number">${prevMonthLastDay - i}</span>`;
+        calendarGrid.appendChild(day);
+    }
+    
+    // Current month days
+    for (let i = 1; i <= daysInMonth; i++) {
+        const day = document.createElement('div');
+        day.className = 'calendar-day';
+        if (isToday(i)) {
+            day.classList.add('today');
+        }
+        
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+        const dayEvents = calendarEvents.filter(event => event.date === dateStr);
+        
+        let eventsHTML = '';
+        dayEvents.forEach(event => {
+            eventsHTML += `<div class="day-event" data-type="${event.type}">${event.title}</div>`;
+        });
+        
+        day.innerHTML = `
+            <span class="day-number">${i}</span>
+            ${eventsHTML}
+        `;
+        calendarGrid.appendChild(day);
+    }
+    
+    // Next month days
+    const totalCells = 42; // 6 weeks * 7 days
+    const remainingCells = totalCells - (startDay + daysInMonth);
+    for (let i = 1; i <= remainingCells; i++) {
+        const day = document.createElement('div');
+        day.className = 'calendar-day other-month';
+        day.innerHTML = `<span class="day-number">${i}</span>`;
+        calendarGrid.appendChild(day);
+    }
+    
+    // Update month display
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                       'July', 'August', 'September', 'October', 'November', 'December'];
+    document.getElementById('currentMonth').textContent = `${monthNames[month]} ${year}`;
+}
+
+// Filter events
+function filterEvents(filter) {
+    const events = document.querySelectorAll('.day-event');
+    events.forEach(event => {
+        if (filter === 'all' || event.dataset.type === filter) {
+            event.style.display = 'block';
+        } else {
+            event.style.display = 'none';
+        }
+    });
+    
+    // Update active filter button
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.filter === filter) {
+            btn.classList.add('active');
+        }
+    });
+}
+
+// FAQ functionality for events page
+function setupEventFAQs() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Close all answers
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                ans.classList.remove('active');
+            });
+            
+            // Remove active class from all questions
+            document.querySelectorAll('.faq-question').forEach(q => {
+                q.classList.remove('active');
+            });
+            
+            // Toggle current answer
+            if (!isActive) {
+                answer.classList.add('active');
+                question.classList.add('active');
+            }
+        });
+    });
+}
+
+// Initialize events page
+function initEventsPage() {
+    const today = new Date();
+    generateCalendar(today.getFullYear(), today.getMonth());
+    
+    // Month navigation
+    let currentDate = new Date();
+    document.getElementById('prevMonth')?.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    });
+    
+    document.getElementById('nextMonth')?.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    });
+    
+    // Event filtering
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterEvents(btn.dataset.filter);
+        });
+    });
+    
+    // Setup FAQs
+    setupEventFAQs();
+    
+    // Group booking form
+    const groupForm = document.getElementById('groupBookingForm');
+    if (groupForm) {
+        groupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your enquiry! We will contact you within 24 hours.');
+            groupForm.reset();
+        });
+    }
+}
+
+// ========= GALLERY PAGE FUNCTIONS =========
+
+function initGalleryPage() {
+    // Category filtering
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.dataset.category;
+            
+            // Update active button
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Filter items
+            galleryItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+    
+    // Load more button
+    const loadMoreBtn = document.getElementById('loadMore');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', () => {
+            loadMoreBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+            setTimeout(() => {
+                loadMoreBtn.innerHTML = '<i class="fas fa-images"></i> No More Photos';
+                loadMoreBtn.disabled = true;
+                loadMoreBtn.style.opacity = '0.5';
+            }, 1000);
+        });
+    }
+    
+    // Video play buttons
+    const videoPlays = document.querySelectorAll('.video-play');
+    videoPlays.forEach(playBtn => {
+        playBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert('Video playback would start here. For demonstration purposes only.');
+        });
+    });
+    
+    // Simple lightbox functionality
+    const galleryLinks = document.querySelectorAll('.gallery-item');
+    const modal = document.getElementById('lightgallery-modal');
+    
+    if (modal) {
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        
+        galleryLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                const imgSrc = link.getAttribute('href');
+                const caption = link.querySelector('.gallery-caption h3')?.textContent || 'Image';
+                const description = link.querySelector('.gallery-caption p')?.textContent || '';
+                
+                modalImage.src = imgSrc;
+                modalImage.alt = caption;
+                modalTitle.textContent = caption;
+                modalDescription.textContent = description;
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Close modal
+        const closeModal = document.querySelector('.modal-close');
+        if (closeModal) {
+            closeModal.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        }
+        
+        // Close modal on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+    
+    // Instagram feed simulation
+    const instagramFeed = document.getElementById('instagramFeed');
+    if (instagramFeed && instagramFeed.querySelector('.instagram-placeholder')) {
+        setTimeout(() => {
+            const placeholder = instagramFeed.querySelector('.instagram-placeholder');
+            if (placeholder) {
+                placeholder.innerHTML = `
+                    <div class="instagram-message">
+                        <i class="fab fa-instagram"></i>
+                        <p>Follow <a href="https://instagram.com/jjhoughs" target="_blank">@jjhoughs</a> on Instagram to see more photos!</p>
+                    </div>
+                `;
+            }
+        }, 2000);
+    }
+}
+
+// ========= CONTACT PAGE FUNCTIONS =========
+
+function initContactPage() {
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
+            });
+            
+            // Validate form
+            if (!formObject.name || !formObject.email || !formObject.subject || !formObject.message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Show loading state
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Success message
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                submitBtn.style.background = '#10B981';
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 3000);
+                
+                alert('Thank you for your message! We will get back to you within 24 hours.');
+            }, 1500);
+        });
+    }
+    
+    // FAQ functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Close all answers in the same column
+            const parentColumn = question.closest('.faq-column');
+            if (parentColumn) {
+                parentColumn.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.classList.remove('active');
+                });
+                parentColumn.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                });
+            }
+            
+            // Toggle current answer
+            if (!isActive) {
+                answer.classList.add('active');
+                question.classList.add('active');
+            }
+        });
+    });
+    
+    // Map interaction
+    const mapPlaceholder = document.querySelector('.map-placeholder');
+    if (mapPlaceholder) {
+        mapPlaceholder.style.cursor = 'pointer';
+        mapPlaceholder.addEventListener('mouseenter', () => {
+            mapPlaceholder.style.transform = 'scale(1.01)';
+        });
+        
+        mapPlaceholder.addEventListener('mouseleave', () => {
+            mapPlaceholder.style.transform = 'scale(1)';
+        });
+    }
+}
+
+// ========= MENU PAGE FUNCTIONS =========
+
+function initMenuPage() {
+    // Menu category switching
+    const menuButtons = document.querySelectorAll('.menu-category-btn');
+    const menuSections = {
+        'food': document.getElementById('foodSection'),
+        'drinks': document.getElementById('drinksSection'),
+        'whiskey': document.getElementById('whiskeySection'),
+        'beer': document.getElementById('drinksSection'), // Same as drinks
+        'specials': document.getElementById('specialsSection')
+    };
+    
+    menuButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const category = button.dataset.category;
+            
+            // Update active button
+            menuButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Hide all sections
+            Object.values(menuSections).forEach(section => {
+                if (section) section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            const targetSection = menuSections[category];
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                
+                // Special case for beer - it's in drinks section
+                if (category === 'beer') {
+                    // Scroll to beer section within drinks
+                    setTimeout(() => {
+                        const beerCategory = targetSection.querySelector('.category-title');
+                        if (beerCategory && beerCategory.textContent.includes('Beers')) {
+                            beerCategory.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }, 100);
+                }
+                
+                // Scroll to section
+                setTimeout(() => {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+            }
+        });
+    });
+    
+    // Update current date for specials
+    const currentDateElement = document.getElementById('currentDate');
+    if (currentDateElement) {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        currentDateElement.textContent = now.toLocaleDateString('en-IE', options);
+    }
+    
+    // Try cocktail button
+    const tryCocktailBtn = document.querySelector('.try-cocktail');
+    if (tryCocktailBtn) {
+        tryCocktailBtn.addEventListener('click', () => {
+            alert('Our bartender will prepare your Black Bush Old Fashioned! Please order at the bar.');
+        });
+    }
+    
+    // Menu item animations
+    const menuItems = document.querySelectorAll('.menu-item, .drinks-item, .whiskey-item, .special-item');
+    menuItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'translateY(-5px)';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'translateY(0)';
+        });
+    });
+}
+
+// ========= INITIALIZE ALL PAGES =========
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize scroll animations for elements
+    document.querySelectorAll('.service-preview, .testimonial-card, .value-card, .team-member, .comparison-item, .info-card, .event-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        scrollObserver.observe(el);
+    });
+    
+    // Check which page we're on and initialize specific functions
+    const path = window.location.pathname;
+    
+    if (path.includes('events.html') || document.querySelector('.event-calendar')) {
+        initEventsPage();
+    }
+    
+    if (path.includes('gallery.html') || document.querySelector('.gallery-grid')) {
+        initGalleryPage();
+    }
+    
+    if (path.includes('contact.html') || document.getElementById('contactForm')) {
+        initContactPage();
+    }
+    
+    if (path.includes('menu.html') || document.querySelector('.menu-categories')) {
+        initMenuPage();
+    }
+    
+    // Initialize any FAQ sections on any page
+    const faqSections = document.querySelectorAll('.faq-item');
+    if (faqSections.length > 0 && !path.includes('contact.html')) {
+        faqSections.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+            
+            if (question && answer) {
+                question.addEventListener('click', () => {
+                    const isActive = answer.classList.contains('active');
+                    
+                    // Close all answers
+                    document.querySelectorAll('.faq-answer').forEach(ans => {
+                        ans.classList.remove('active');
+                    });
+                    
+                    // Remove active class from all questions
+                    document.querySelectorAll('.faq-question').forEach(q => {
+                        q.classList.remove('active');
+                    });
+                    
+                    // Toggle current answer
+                    if (!isActive) {
+                        answer.classList.add('active');
+                        question.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+    
+    // Set current year in footer if needed
+    const yearSpans = document.querySelectorAll('.current-year');
+    if (yearSpans.length > 0) {
+        const currentYear = new Date().getFullYear();
+        yearSpans.forEach(span => {
+            span.textContent = currentYear;
+        });
+    }
+});
+
+// ========= UTILITY FUNCTIONS =========
+
+// Debounce function for scroll events
+function debounce(func, wait = 20, immediate = true) {
+    let timeout;
+    return function() {
+        const context = this, args = arguments;
+        const later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
+
+// Throttle function for resize events
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// Format currency
+function formatCurrency(amount) {
+    return new Intl.NumberFormat('en-IE', {
+        style: 'currency',
+        currency: 'EUR'
+    }).format(amount);
+}
+
+// Email validation
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+// Phone validation (Irish format)
+function validatePhone(phone) {
+    const re = /^(\+353|0)(\s?[1-9]{1}[\d\s]{8,9})$/;
+    return re.test(phone);
+}
+
+// Show notification
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        <span>${message}</span>
+        <button class="notification-close"><i class="fas fa-times"></i></button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Remove after 5 seconds
+    setTimeout(() => {
+        notification.classList.add('fade-out');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+    
+    // Close button
+    notification.querySelector('.notification-close').addEventListener('click', () => {
+        notification.classList.add('fade-out');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    });
+}
+
+// Add CSS for notifications
+const notificationStyles = document.createElement('style');
+notificationStyles.textContent = `
+    .notification {
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        z-index: 9999;
+        animation: slideInRight 0.3s ease;
+        border-left: 4px solid #10B981;
+    }
+    
+    .notification.error {
+        border-left-color: #EF4444;
+    }
+    
+    .notification i {
+        font-size: 1.2rem;
+    }
+    
+    .notification.success i {
+        color: #10B981;
+    }
+    
+    .notification.error i {
+        color: #EF4444;
+    }
+    
+    .notification span {
+        flex: 1;
+    }
+    
+    .notification-close {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #6B7280;
+        padding: 0.25rem;
+    }
+    
+    .notification.fade-out {
+        animation: slideOutRight 0.3s ease forwards;
+    }
+    
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+
+document.head.appendChild(notificationStyles);

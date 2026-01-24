@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | JJ Hough's Singing Pub</title>
+    <meta name="description" content="Experience the atmosphere of JJ Hough's through our photo gallery. See our traditional pub, live music sessions, and special events.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:wght@400;500;600&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/css/lightgallery.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">JJ Hough's</span>
+                <span class="logo-sub">Singing Pub</span>
+            </a>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:0879357312" class="nav-phone"><i class="fas fa-phone"></i> 087 935 7312</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero hero-gallery">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Our Gallery</h1>
+            <p class="hero-subtitle">Capture the spirit of JJ Hough's through photos and videos</p>
+        </div>
+    </section>
+
+    <!-- Gallery Navigation -->
+    <section class="gallery-nav">
+        <div class="container">
+            <div class="gallery-categories">
+                <button class="category-btn active" data-category="all">All Photos</button>
+                <button class="category-btn" data-category="pub">The Pub</button>
+                <button class="category-btn" data-category="music">Music Sessions</button>
+                <button class="category-btn" data-category="events">Special Events</button>
+                <button class="category-btn" data-category="food">Food & Drink</button>
+                <button class="category-btn" data-category="people">People & Atmosphere</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="photo-gallery">
+        <div class="container">
+            <div id="lightgallery" class="gallery-grid">
+                <!-- Pub Photos -->
+                <a href="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80" 
+                   class="gallery-item" data-category="pub" data-subtitle="Our traditional bar area">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="JJ Hough's traditional bar area">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">The Pub</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>Our Traditional Bar</h3>
+                        <p>The heart of JJ Hough's with original features</p>
+                    </div>
+                </a>
+                
+                <!-- Music Session Photos -->
+                <a href="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                   class="gallery-item" data-category="music" data-subtitle="Live traditional music session">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Live traditional music session at JJ Hough's">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">Music Sessions</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>Live Trad Session</h3>
+                        <p>Nightly music with local and visiting musicians</p>
+                    </div>
+                </a>
+                
+                <!-- Pub Exterior -->
+                <a href="https://images.unsplash.com/photo-1569510914730-f8080f8b44f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                   class="gallery-item" data-category="pub" data-subtitle="Historic pub exterior">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1569510914730-f8080f8b44f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="JJ Hough's historic pub exterior">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">The Pub</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>Historic Exterior</h3>
+                        <p>Our building dating back to 1802</p>
+                    </div>
+                </a>
+                
+                <!-- Special Event -->
+                <a href="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" 
+                   class="gallery-item" data-category="events" data-subtitle="St. Patrick's Day celebration">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="St. Patrick's Day celebration at JJ Hough's">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">Special Events</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>St. Patrick's Day</h3>
+                        <p>Annual celebrations with packed sessions</p>
+                    </div>
+                </a>
+                
+                <!-- Food & Drink -->
+                <a href="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1999&q=80" 
+                   class="gallery-item" data-category="food" data-subtitle="Traditional Irish food">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Traditional Irish food at JJ Hough's">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">Food & Drink</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>Traditional Food</h3>
+                        <p>Hearty meals served Thursday to Sunday</p>
+                    </div>
+                </a>
+                
+                <!-- People & Atmosphere -->
+                <a href="https://images.unsplash.com/photo-1532635243-17cf4d46b6d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                   class="gallery-item" data-category="people" data-subtitle="Pub atmosphere and customers">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1532635243-17cf4d46b6d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Pub atmosphere and happy customers">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">People & Atmosphere</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>Pub Atmosphere</h3>
+                        <p>Locals and visitors enjoying the craic</p>
+                    </div>
+                </a>
+                
+                <!-- Musician Close-up -->
+                <a href="https://images.unsplash.com/photo-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                   class="gallery-item" data-category="music" data-subtitle="Fiddle player in session">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/phone-1516280440614-37939bbacd81?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Fiddle player in traditional music session">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">Music Sessions</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>Traditional Fiddle</h3>
+                        <p>Close-up of our musicians in action</p>
+                    </div>
+                </a>
+                
+                <!-- Guinness Pour -->
+                <a href="https://images.unsplash.com/photo-1629455800825-08c50a5e6f2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                   class="gallery-item" data-category="food" data-subtitle="Perfect pint of Guinness">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1629455800825-08c50a5e6f2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Perfect pint of Guinness being poured">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">Food & Drink</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>The Perfect Pint</h3>
+                        <p>Guinness poured the traditional way</p>
+                    </div>
+                </a>
+                
+                <!-- Group Session -->
+                <a href="https://images.unsplash.com/photo-1571974599782-87624638275c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2092&q=80" 
+                   class="gallery-item" data-category="music" data-subtitle="Group music session">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1571974599782-87624638275c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Group traditional music session">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">Music Sessions</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>Group Session</h3>
+                        <p>Musicians playing together in harmony</p>
+                    </div>
+                </a>
+                
+                <!-- Pub Interior -->
+                <a href="https://images.unsplash.com/photo-1569510914730-f8080f8b44f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                   class="gallery-item" data-category="pub" data-subtitle="Cozy pub interior">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1569510914730-f8080f8b44f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Cozy pub interior with fireplace">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">The Pub</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>Cozy Corner</h3>
+                        <p>Our traditional snugs by the fireplace</p>
+                    </div>
+                </a>
+                
+                <!-- Festival Event -->
+                <a href="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                   class="gallery-item" data-category="events" data-subtitle="Summer music festival">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Summer music festival at JJ Hough's">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">Special Events</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>Summer Festival</h3>
+                        <p>Outdoor events during summer months</p>
+                    </div>
+                </a>
+                
+                <!-- Whiskey Selection -->
+                <a href="https://images.unsplash.com/photo-1581017918411-5a99a859c1c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" 
+                   class="gallery-item" data-category="food" data-subtitle="Irish whiskey selection">
+                    <div class="gallery-image">
+                        <img src="https://images.unsplash.com/photo-1581017918411-5a99a859c1c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Selection of Irish whiskeys">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                            <span class="category-tag">Food & Drink</span>
+                        </div>
+                    </div>
+                    <div class="gallery-caption">
+                        <h3>Irish Whiskey</h3>
+                        <p>Extensive selection of local whiskeys</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="gallery-load-more">
+                <button id="loadMore" class="btn-primary">
+                    <i class="fas fa-images"></i> Load More Photos
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery -->
+    <section class="video-gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience the Music</h2>
+                <p class="section-subtitle">Watch highlights from our sessions</p>
+            </div>
+            
+            <div class="video-grid">
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Tuesday Open Mic Night">
+                        <div class="video-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Tuesday Open Mic Night</h3>
+                        <p>Highlights from our famous weekly open mic session</p>
+                        <span class="video-duration">4:32</span>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Saturday Special Session">
+                        <div class="video-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Saturday Special Session</h3>
+                        <p>Extended session with visiting musicians</p>
+                        <span class="video-duration">6:15</span>
+                    </div>
+                </div>
+                
+                <div class="video-item">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1571974599782-87624638275c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Traditional Fiddle Tunes">
+                        <div class="video-play">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Traditional Fiddle Tunes</h3>
+                        <p>Local musician plays classic Irish tunes</p>
+                        <span class="video-duration">3:48</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visitor Photos -->
+    <section class="visitor-photos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Visitor Photos</h2>
+                <p class="section-subtitle">Tag us on Instagram @jjhoughs to be featured</p>
+                <a href="https://instagram.com/jjhoughs" target="_blank" class="instagram-handle">
+                    @jjhoughs <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            
+            <div class="instagram-feed-preview">
+                <div class="instagram-grid" id="instagramFeed">
+                    <!-- Instagram feed will be loaded via JavaScript -->
+                    <div class="instagram-placeholder">
+                        <i class="fab fa-instagram"></i>
+                        <p>Loading Instagram photos...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="gallery-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Capture Your Own Memories</h2>
+                <p>Visit JJ Hough's and experience the atmosphere for yourself. Don't forget to share your photos with #JJHoughs</p>
+                <div class="cta-buttons">
+                    <a href="events.html" class="btn-primary">View Events Calendar</a>
+                    <a href="contact.html" class="btn-secondary">Plan Your Visit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>JJ Hough's Singing Pub</h3>
+                    <p>Banagher's home of traditional Irish music since 1802. Experience authentic craic, great drinks, and live music seven days a week.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/jjhoughs" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="events.html">Events</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="menu.html">Menu</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Main St, Banagher, Co. Offaly</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:0879357312">087 935 7312</a></p>
+                    <p><i class="fas fa-clock"></i> 12:00 PM - 1:00 AM Daily</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Get updates on upcoming sessions and events</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2024 JJ Hough's Singing Pub. All rights reserved.</p>
+                <p class="footer-links">
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LightGallery Modal -->
+    <div id="lightgallery-modal" class="lightgallery-modal">
+        <div class="modal-content">
+            <button class="modal-close"><i class="fas fa-times"></i></button>
+            <img id="modal-image" src="" alt="">
+            <div class="modal-caption">
+                <h3 id="modal-title"></h3>
+                <p id="modal-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.4.0/lightgallery.umd.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

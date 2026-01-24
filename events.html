@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Sessions | JJ Hough's Singing Pub</title>
+    <meta name="description" content="Live traditional Irish music 7 nights a week at JJ Hough's. View our event calendar, weekly sessions, and special musical events in Banagher.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:wght@400;500;600&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">JJ Hough's</span>
+                <span class="logo-sub">Singing Pub</span>
+            </a>
+            
+            <div class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="tel:0879357312" class="nav-phone"><i class="fas fa-phone"></i> 087 935 7312</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero hero-events">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Music Every Night</h1>
+            <p class="hero-subtitle">Live traditional sessions, special events, and authentic Irish craic</p>
+        </div>
+    </section>
+
+    <!-- Weekly Schedule -->
+    <section class="weekly-schedule">
+        <div class="container">
+            <div class="section-header">
+                <h2>Weekly Music Sessions</h2>
+                <p class="section-subtitle">Join us for live traditional music every night of the week</p>
+            </div>
+            
+            <div class="schedule-grid">
+                <div class="day-card monday">
+                    <div class="day-header">
+                        <h3>Monday</h3>
+                        <span class="day-date">Trad Session</span>
+                    </div>
+                    <div class="day-content">
+                        <p class="event-time"><i class="fas fa-clock"></i> 8:00 PM - Late</p>
+                        <p>Our weekly traditional Irish music session kicks off the week. All musicians welcome to join this relaxed session.</p>
+                        <div class="event-tags">
+                            <span class="tag">Traditional</span>
+                            <span class="tag">All Welcome</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="day-card tuesday">
+                    <div class="day-header">
+                        <h3>Tuesday</h3>
+                        <span class="day-date">Open Mic Night</span>
+                    </div>
+                    <div class="day-content">
+                        <p class="event-time"><i class="fas fa-clock"></i> 9:00 PM - Late</p>
+                        <p>The famous JJ Hough's open mic night. Singers, musicians, poets - all talent welcome. House instruments available.</p>
+                        <div class="event-tags">
+                            <span class="tag">Open Mic</span>
+                            <span class="tag">Variety</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="day-card wednesday">
+                    <div class="day-header">
+                        <h3>Wednesday</h3>
+                        <span class="day-date">Midweek Session</span>
+                    </div>
+                    <div class="day-content">
+                        <p class="event-time"><i class="fas fa-clock"></i> 8:30 PM - Late</p>
+                        <p>A mix of traditional and contemporary folk music. Perfect midweek escape with great music and atmosphere.</p>
+                        <div class="event-tags">
+                            <span class="tag">Traditional</span>
+                            <span class="tag">Folk</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="day-card thursday">
+                    <div class="day-header">
+                        <h3>Thursday</h3>
+                        <span class="day-date">Weekend Warm-up</span>
+                    </div>
+                    <div class="day-content">
+                        <p class="event-time"><i class="fas fa-clock"></i> 8:00 PM - 1:00 AM</p>
+                        <p>Extended session to start the weekend. Food served until 9pm. Great mix of local and visiting musicians.</p>
+                        <div class="event-tags">
+                            <span class="tag">Extended Hours</span>
+                            <span class="tag">Food Available</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="day-card friday">
+                    <div class="day-header">
+                        <h3>Friday</h3>
+                        <span class="day-date">Live Band Night</span>
+                    </div>
+                    <div class="day-content">
+                        <p class="event-time"><i class="fas fa-clock"></i> 9:00 PM - 1:00 AM</p>
+                        <p>Featured band followed by open session. The place to be for the best traditional music to kick off your weekend.</p>
+                        <div class="event-tags">
+                            <span class="tag">Live Band</span>
+                            <span class="tag">Featured</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="day-card saturday">
+                    <div class="day-header">
+                        <h3>Saturday</h3>
+                        <span class="day-date">Special Session</span>
+                    </div>
+                    <div class="day-content">
+                        <p class="event-time"><i class="fas fa-clock"></i> 7:00 PM - 1:00 AM</p>
+                        <p>Our flagship session featuring visiting musicians from across Ireland. Expect an unforgettable night of music.</p>
+                        <div class="event-tags">
+                            <span class="tag">Special Event</span>
+                            <span class="tag">Visiting Musicians</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="day-card sunday">
+                    <div class="day-header">
+                        <h3>Sunday</h3>
+                        <span class="day-date">Sunday Session</span>
+                    </div>
+                    <div class="day-content">
+                        <p class="event-time"><i class="fas fa-clock"></i> 6:00 PM - Midnight</p>
+                        <p>Relaxed Sunday session - the perfect way to end the week. Mix of slow airs, songs, and gentle tunes.</p>
+                        <div class="event-tags">
+                            <span class="tag">Relaxed</span>
+                            <span class="tag">Acoustic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Calendar -->
+    <section class="event-calendar">
+        <div class="container">
+            <div class="section-header">
+                <h2>Upcoming Special Events</h2>
+                <p class="section-subtitle">Mark your calendar for these not-to-be-missed musical events</p>
+            </div>
+            
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <div class="month-navigation">
+                        <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                        <h3 id="currentMonth">March 2024</h3>
+                        <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="calendar-filter">
+                        <button class="filter-btn active" data-filter="all">All Events</button>
+                        <button class="filter-btn" data-filter="music">Music</button>
+                        <button class="filter-btn" data-filter="special">Special</button>
+                        <button class="filter-btn" data-filter="food">Food</button>
+                    </div>
+                </div>
+                
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar will be populated by JavaScript -->
+                </div>
+                
+                <div class="upcoming-events">
+                    <h3>Featured This Month</h3>
+                    <div class="featured-events">
+                        <div class="featured-event" data-date="2024-03-15">
+                            <div class="featured-date">
+                                <span class="date-day">15</span>
+                                <span class="date-month">MAR</span>
+                            </div>
+                            <div class="featured-content">
+                                <h4>St. Patrick's Weekend Festival</h4>
+                                <p>Three days of continuous music with bands from across Ireland. Food specials all weekend.</p>
+                                <span class="event-type music">Music Festival</span>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-event" data-date="2024-03-22">
+                            <div class="featured-date">
+                                <span class="date-day">22</span>
+                                <span class="date-month">MAR</span>
+                            </div>
+                            <div class="featured-content">
+                                <h4>Traditional Music Workshop</h4>
+                                <p>Afternoon workshop for beginner musicians followed by evening performance session.</p>
+                                <span class="event-type special">Workshop</span>
+                            </div>
+                        </div>
+                        
+                        <div class="featured-event" data-date="2024-03-29">
+                            <div class="featured-date">
+                                <span class="date-day">29</span>
+                                <span class="date-month">MAR</span>
+                            </div>
+                            <div class="featured-content">
+                                <h4>Easter Weekend Special</h4>
+                                <p>Four-day music marathon with special guest musicians and Easter Sunday roast dinner.</p>
+                                <span class="event-type food">Food & Music</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music FAQs -->
+    <section class="music-faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Musician FAQs</h2>
+                <p class="section-subtitle">Answers for visiting musicians</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I bring my instrument and join a session?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! All musicians are welcome at JJ Hough's. Just introduce yourself to the session leader when you arrive. We have house instruments available if you're traveling light.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What time should I arrive for sessions?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sessions typically start around the times listed, but musicians often arrive 30-60 minutes early to settle in. Friday and Saturday sessions are our busiest - arrive early to secure a good spot.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Do you have backline equipment?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We have a basic PA system, microphones, and stands available for scheduled performances. For session playing, we're primarily acoustic - but we can accommodate small amplifiers if needed.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Are there any rules for the sessions?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Respect is our only rule. Wait your turn, tune quietly, and be mindful of volume levels. Our sessions are inclusive - all levels of experience are welcome.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA -->
+    <section class="booking-cta">
+        <div class="container">
+            <div class="booking-content">
+                <div class="booking-text">
+                    <h2>Planning a Group Visit?</h2>
+                    <p>Bringing a tour group, celebrating a special occasion, or organizing a musical gathering? Let us help make your visit memorable.</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Group reservations available</li>
+                        <li><i class="fas fa-check"></i> Private area for large groups</li>
+                        <li><i class="fas fa-check"></i> Custom food packages</li>
+                        <li><i class="fas fa-check"></i> Arranged sessions for tour groups</li>
+                    </ul>
+                </div>
+                <div class="booking-form">
+                    <h3>Enquire About Group Visits</h3>
+                    <form id="groupBookingForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Email Address" required>
+                        <input type="tel" placeholder="Phone Number">
+                        <input type="date" placeholder="Preferred Date">
+                        <textarea placeholder="Tell us about your group and requirements..." rows="3"></textarea>
+                        <button type="submit" class="btn-primary">Send Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>JJ Hough's Singing Pub</h3>
+                    <p>Banagher's home of traditional Irish music since 1802. Experience authentic craic, great drinks, and live music seven days a week.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/jjhoughs" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="events.html">Events</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="menu.html">Menu</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Main St, Banagher, Co. Offaly</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:0879357312">087 935 7312</a></p>
+                    <p><i class="fas fa-clock"></i> 12:00 PM - 1:00 AM Daily</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Get updates on upcoming sessions and events</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2024 JJ Hough's Singing Pub. All rights reserved.</p>
+                <p class="footer-links">
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
