@@ -1,3 +1,20 @@
+// ========= EMAILJS CONFIGURATION =========
+window.EMAILJS_CONFIG = {
+    USER_ID: 'OAu2A8_bcxDNyZT7y',      // Your EmailJS User ID
+    SERVICE_ID: 'service_gq205g3',     // Your EmailJS Service ID
+    TEMPLATE_ID: 'template_ha8xxpf'    // Your NEW Template ID for JJ Hough's
+};
+
+console.log('EmailJS Config:', window.EMAILJS_CONFIG);
+
+// Initialize EmailJS
+if (window.EMAILJS_CONFIG.USER_ID) {
+    emailjs.init(window.EMAILJS_CONFIG.USER_ID);
+    console.log('EmailJS initialized with User ID:', window.EMAILJS_CONFIG.USER_ID);
+} else {
+    console.warn('EmailJS not initialized - missing User ID');
+}
+
 // ========= GLOBAL FUNCTIONS =========
 
 // Mobile Navigation Toggle
@@ -393,54 +410,129 @@ function initGalleryPage() {
 
 // ========= CONTACT PAGE FUNCTIONS =========
 
+// ========= CONTACT PAGE FUNCTIONS =========
+
 function initContactPage() {
     // Contact form submission
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(contactForm);
-            const formObject = {};
-            formData.forEach((value, key) => {
-                formObject[key] = value;
-            });
+            // Validate required fields
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const newsletter = document.getElementById('newsletter').checked;
             
-            // Validate form
-            if (!formObject.name || !formObject.email || !formObject.subject || !formObject.message) {
-                alert('Please fill in all required fields.');
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all required fields (*)');
                 return;
             }
             
-            // Show loading state
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Get form button and show loading
             const submitBtn = contactForm.querySelector('.submit-btn');
             const originalText = submitBtn.innerHTML;
+            const originalBg = submitBtn.style.background;
+            
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
+            submitBtn.style.background = '#6B7280';
             
-            // Simulate API call
-            setTimeout(() => {
-                // Success message
+            try {
+                // Get subject text from dropdown
+                const subjectSelect = document.getElementById('subject');
+                const selectedOption = subjectSelect.options[subjectSelect.selectedIndex];
+                const subjectText = selectedOption.text;
+                
+                // Prepare email data for your NEW template
+                const templateParams = {
+                    from_name: name,
+                    from_email: email,
+                    phone: phone || 'Not provided',
+                    business_type: subjectText,  // Using business_type for template compatibility
+                    message: message,
+                    newsletter_subscribed: newsletter ? 'Yes' : 'No',
+                    date: new Date().toLocaleString('en-IE', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                        timeZone: 'Europe/Dublin'
+                    })
+                };
+                
+                console.log('Sending email with params:', templateParams);
+                
+                // Send email via EmailJS with your NEW template
+                const response = await emailjs.send(
+                    window.EMAILJS_CONFIG.SERVICE_ID,
+                    window.EMAILJS_CONFIG.TEMPLATE_ID,
+                    templateParams
+                );
+                
+                // SUCCESS
+                console.log('EmailJS Response:', response);
+                
+                // Update button to success state
                 submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
                 submitBtn.style.background = '#10B981';
                 
-                // Reset form
-                contactForm.reset();
+                // Show success message
+                showFormMessage(
+                    'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.',
+                    'success'
+                );
                 
-                // Reset button after 3 seconds
+                // Reset form after delay
+                setTimeout(() => {
+                    contactForm.reset();
+                }, 2000);
+                
+            } catch (error) {
+                // ERROR
+                console.error('EmailJS Error:', error);
+                
+                // Update button to error state
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Failed to Send';
+                submitBtn.style.background = '#EF4444';
+                
+                // Show error message
+                let errorMsg = 'Sorry, there was an error sending your message. ';
+                
+                if (error.text && error.text.includes('Invalid login')) {
+                    errorMsg += 'Email service configuration error.';
+                } else if (error.text && error.text.includes('quota')) {
+                    errorMsg += 'Email limit reached. Please try again later.';
+                } else {
+                    errorMsg += 'Please try again or email us directly at info@jjhoughs.ie';
+                }
+                
+                showFormMessage(errorMsg, 'error');
+                
+            } finally {
+                // Reset button after 5 seconds
                 setTimeout(() => {
                     submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = '';
+                    submitBtn.style.background = originalBg;
                     submitBtn.disabled = false;
-                }, 3000);
-                
-                alert('Thank you for your message! We will get back to you within 24 hours.');
-            }, 1500);
+                }, 5000);
+            }
         });
     }
     
-    // FAQ functionality
+    // FAQ functionality (keep this part as is)
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
@@ -466,7 +558,7 @@ function initContactPage() {
         });
     });
     
-    // Map interaction
+    // Map interaction (keep this part as is)
     const mapPlaceholder = document.querySelector('.map-placeholder');
     if (mapPlaceholder) {
         mapPlaceholder.style.cursor = 'pointer';
@@ -778,3 +870,85 @@ notificationStyles.textContent = `
 `;
 
 document.head.appendChild(notificationStyles);
+
+
+// ========= HELPER FUNCTION FOR FORM MESSAGES =========
+function showFormMessage(message, type = 'success') {
+    // Remove any existing messages
+    const existingMsg = document.querySelector('.form-message');
+    if (existingMsg) {
+        existingMsg.remove();
+    }
+    
+    // Create message element
+    const messageEl = document.createElement('div');
+    messageEl.className = `form-message ${type}`;
+    messageEl.innerHTML = `
+        <p>${message}</p>
+        <button class="close-message">&times;</button>
+    `;
+    
+    // Add styles
+    messageEl.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        background: ${type === 'success' ? '#10B981' : '#EF4444'};
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 300px;
+        max-width: 400px;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    // Add close button
+    const closeBtn = messageEl.querySelector('.close-message');
+    closeBtn.style.cssText = `
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        padding: 0 0 0 20px;
+        line-height: 1;
+    `;
+    
+    closeBtn.addEventListener('click', () => {
+        messageEl.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => messageEl.remove(), 300);
+    });
+    
+    // Add animations if not already present
+    if (!document.querySelector('#form-message-animations')) {
+        const style = document.createElement('style');
+        style.id = 'form-message-animations';
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    // Auto-remove after 7 seconds
+    setTimeout(() => {
+        if (document.body.contains(messageEl)) {
+            messageEl.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => messageEl.remove(), 300);
+        }
+    }, 7000);
+    
+    // Add to page
+    document.body.appendChild(messageEl);
+}
