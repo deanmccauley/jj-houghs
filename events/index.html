@@ -232,57 +232,57 @@
         </div>
     </section>
 
-    <!-- Music FAQs -->
-    <section class="music-faq">
-        <div class="container">
-            <div class="section-header">
-                <h2>Musician FAQs</h2>
-                <p class="section-subtitle">Answers for visiting musicians</p>
+    <!-- Music FAQs - FIXED VERSION -->
+<section class="music-faq-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Musician FAQs</h2>
+            <p class="section-subtitle">Answers for visiting musicians</p>
+        </div>
+        
+        <div class="simple-faq-grid">
+            <div class="simple-faq-item">
+                <button class="simple-faq-question">
+                    <h4>Can I bring my instrument and join a session?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="simple-faq-answer">
+                    <p>Absolutely! All musicians are welcome at JJ Hough's. Just introduce yourself to the session leader when you arrive. We have house instruments available if you're traveling light.</p>
+                </div>
             </div>
             
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Can I bring my instrument and join a session?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolutely! All musicians are welcome at JJ Hough's. Just introduce yourself to the session leader when you arrive. We have house instruments available if you're traveling light.</p>
-                    </div>
+            <div class="simple-faq-item">
+                <button class="simple-faq-question">
+                    <h4>What time should I arrive for sessions?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="simple-faq-answer">
+                    <p>Sessions typically start around the times listed, but musicians often arrive 30-60 minutes early to settle in. Friday and Saturday sessions are our busiest - arrive early to secure a good spot.</p>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>What time should I arrive for sessions?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sessions typically start around the times listed, but musicians often arrive 30-60 minutes early to settle in. Friday and Saturday sessions are our busiest - arrive early to secure a good spot.</p>
-                    </div>
+            </div>
+            
+            <div class="simple-faq-item">
+                <button class="simple-faq-question">
+                    <h4>Do you have backline equipment?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="simple-faq-answer">
+                    <p>We have a basic PA system, microstations, and stands available for scheduled performances. For session playing, we're primarily acoustic - but we can accommodate small amplifiers if needed.</p>
                 </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Do you have backline equipment?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We have a basic PA system, microphones, and stands available for scheduled performances. For session playing, we're primarily acoustic - but we can accommodate small amplifiers if needed.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h4>Are there any rules for the sessions?</h4>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Respect is our only rule. Wait your turn, tune quietly, and be mindful of volume levels. Our sessions are inclusive - all levels of experience are welcome.</p>
-                    </div>
+            </div>
+            
+            <div class="simple-faq-item">
+                <button class="simple-faq-question">
+                    <h4>Are there any rules for the sessions?</h4>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="simple-faq-answer">
+                    <p>Respect is our only rule. Wait your turn, tune quietly, and be mindful of volume levels. Our sessions are inclusive - all levels of experience are welcome.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Booking CTA -->
     <section class="booking-cta">
@@ -364,62 +364,16 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-      <<script>
-    // Fix for events page FAQ - Smooth Accordion Style
-    document.addEventListener('DOMContentLoaded', function() {
-        const faqContainer = document.querySelector('.music-faq');
-        if (!faqContainer) return;
-        
-        const faqQuestions = faqContainer.querySelectorAll('.faq-question');
-        
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', function() {
-                // Close all other FAQs first
-                faqQuestions.forEach(otherQuestion => {
-                    if (otherQuestion !== this) {
-                        const otherAnswer = otherQuestion.nextElementSibling;
-                        const otherIcon = otherQuestion.querySelector('i');
-                        
-                        otherAnswer.classList.remove('active');
-                        otherQuestion.classList.remove('active');
-                        
-                        // Reset other icons
-                        if (otherIcon) {
-                            otherIcon.classList.remove('fa-chevron-up');
-                            otherIcon.classList.add('fa-chevron-down');
-                        }
-                    }
-                });
-                
-                // Toggle current FAQ
-                const answer = this.nextElementSibling;
-                const icon = this.querySelector('i');
-                
-                const isActive = answer.classList.contains('active');
-                
-                if (isActive) {
-                    // Close this one
-                    answer.classList.remove('active');
-                    this.classList.remove('active');
-                    if (icon) {
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    }
-                } else {
-                    // Open this one
-                    answer.classList.add('active');
-                    this.classList.add('active');
-                    if (icon) {
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    }
-                }
-            });
-        });
-    });
-</script>
+<!-- EmailJS MUST load before your script -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<!-- Your main JS -->
+<script src="js/script.js"></script>
+
+
+
+      
 </body>
 </html>

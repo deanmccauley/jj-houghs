@@ -226,31 +226,31 @@ function filterEvents(filter) {
 }
 
 // FAQ functionality for events page
+// FAQ functionality for events page
+// Even simpler version
 function setupEventFAQs() {
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            const isActive = answer.classList.contains('active');
+    console.log('Setting up working FAQs...');
+    
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            const isVisible = answer.style.display === 'block';
             
-            // Close all answers
-            document.querySelectorAll('.faq-answer').forEach(ans => {
-                ans.classList.remove('active');
+            // Hide all answers first
+            document.querySelectorAll('.faq-answer').forEach(a => {
+                a.style.display = 'none';
+                a.classList.remove('active');
             });
             
-            // Remove active class from all questions
-            document.querySelectorAll('.faq-question').forEach(q => {
-                q.classList.remove('active');
-            });
-            
-            // Toggle current answer
-            if (!isActive) {
+            // Show this answer
+            if (!isVisible) {
+                answer.style.display = 'block';
                 answer.classList.add('active');
-                question.classList.add('active');
             }
         });
     });
 }
+
 
 // Initialize events page
 function initEventsPage() {
@@ -665,52 +665,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check which page we're on and initialize specific functions
     const path = window.location.pathname;
     
-    if (path.includes('events.html') || document.querySelector('.event-calendar')) {
-        initEventsPage();
-    }
+    if (document.querySelector('.music-faq')) {
+    initEventsPage();
+}
     
-    if (path.includes('gallery.html') || document.querySelector('.gallery-grid')) {
+    if (path.includes('/gallery') || document.querySelector('.gallery-grid')) {
         initGalleryPage();
     }
     
-    if (path.includes('contact.html') || document.getElementById('contactForm')) {
+    if (path.includes('/contact') || document.getElementById('contactForm')) {
         initContactPage();
     }
     
-    if (path.includes('menu.html') || document.querySelector('.menu-categories')) {
+    if (path.includes('/menu') || document.querySelector('.menu-categories')) {
         initMenuPage();
     }
     
-    // Initialize any FAQ sections on any page
-    const faqSections = document.querySelectorAll('.faq-item');
-    if (faqSections.length > 0 && !path.includes('contact.html')) {
-        faqSections.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            const answer = item.querySelector('.faq-answer');
-            
-            if (question && answer) {
-                question.addEventListener('click', () => {
-                    const isActive = answer.classList.contains('active');
-                    
-                    // Close all answers
-                    document.querySelectorAll('.faq-answer').forEach(ans => {
-                        ans.classList.remove('active');
-                    });
-                    
-                    // Remove active class from all questions
-                    document.querySelectorAll('.faq-question').forEach(q => {
-                        q.classList.remove('active');
-                    });
-                    
-                    // Toggle current answer
-                    if (!isActive) {
-                        answer.classList.add('active');
-                        question.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
+    
     
     // Set current year in footer if needed
     const yearSpans = document.querySelectorAll('.current-year');
@@ -952,3 +923,60 @@ function showFormMessage(message, type = 'success') {
     // Add to page
     document.body.appendChild(messageEl);
 }
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.querySelector('.music-faq')) {
+        setupEventFAQs();
+        console.log('FAQ initialised');
+    }
+});
+
+// Add at the VERY END of script.js (temporarily for debugging)
+console.log('Script loaded');
+console.log('FAQ items found:', document.querySelectorAll('.faq-item').length);
+console.log('Music FAQ section found:', document.querySelector('.music-faq') ? 'Yes' : 'No');
+
+
+// ========= SIMPLE FAQ FUNCTIONALITY =========
+function setupSimpleFAQs() {
+    console.log('Setting up simple FAQ functionality...');
+    
+    document.querySelectorAll('.simple-faq-question').forEach(question => {
+        question.addEventListener('click', function() {
+            console.log('FAQ clicked');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.simple-faq-item').forEach(item => {
+                if (item !== this.parentElement) {
+                    item.querySelector('.simple-faq-answer').classList.remove('active');
+                    item.querySelector('.simple-faq-question').classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            const answer = this.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+            
+            // Close if it's already open
+            if (isActive) {
+                answer.classList.remove('active');
+                this.classList.remove('active');
+            } 
+            // Open if it's closed
+            else {
+                answer.classList.add('active');
+                this.classList.add('active');
+            }
+        });
+    });
+    
+    console.log('FAQ setup complete');
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if we're on events page
+    if (document.querySelector('.simple-faq-grid')) {
+        setupSimpleFAQs();
+        console.log('Simple FAQs initialized');
+    }
+});

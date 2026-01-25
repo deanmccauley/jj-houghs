@@ -3396,3 +3396,153 @@ footer {
 .atmosphere-image .image-frame {
     height: 350px;
 }
+
+/* In your styles.css */
+.faq-item.active {
+    /* Item styles when active */
+}
+
+.faq-question.active {
+    /* Question styles when active */
+}
+
+.faq-answer.active {
+    /* Answer styles when active */
+    max-height: 500px !important; /* Or whatever height you need */
+    padding: 1rem 1.5rem !important;
+}
+
+/* ========= FAQ ANSWER FIX ========= */
+
+/* Remove max-height transition - it's causing issues */
+.faq-answer {
+    display: none; /* Start hidden */
+    padding: 0;
+    overflow: hidden;
+    transition: padding 0.3s ease; /* Only transition padding */
+}
+
+/* When active, show with display: block */
+.faq-answer.active {
+    display: block !important;
+    padding: 1.5rem;
+    max-height: none !important; /* Remove max-height constraint */
+    height: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Alternative: Use different approach */
+.faq-item.active .faq-answer {
+    display: block;
+    padding: 1.5rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========= FAQ WORKING FIX ========= */
+
+/* Override all previous FAQ answer styles */
+.music-faq .faq-answer {
+    display: none;
+    padding: 0;
+    overflow: visible;
+    transition: none;
+}
+
+.music-faq .faq-item.active .faq-answer,
+.music-faq .faq-answer.active {
+    display: block !important;
+    padding: 1.5rem !important;
+    max-height: none !important;
+    height: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    border: none !important; /* Remove any test borders */
+    background: none !important; /* Remove any test backgrounds */
+}
+
+/* Remove max-height transitions completely */
+.music-faq .faq-answer {
+    max-height: none !important;
+    transition-property: none !important;
+}
+
+/* ========= SIMPLE WORKING FAQ STYLES ========= */
+.music-faq-section {
+    padding: 6rem 0;
+    background: var(--light-color);
+}
+
+.simple-faq-grid {
+    max-width: 800px;
+    margin: 3rem auto 0;
+}
+
+.simple-faq-item {
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.simple-faq-question {
+    width: 100%;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+}
+
+.simple-faq-question h4 {
+    color: white;
+    margin: 0;
+    flex: 1;
+    font-size: 1.1rem;
+}
+
+.simple-faq-question i {
+    transition: transform 0.3s ease;
+    margin-left: 1rem;
+}
+
+.simple-faq-question.active i {
+    transform: rotate(180deg);
+}
+
+.simple-faq-answer {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background: white;
+}
+
+.simple-faq-answer.active {
+    padding: 1.5rem;
+    max-height: 500px;
+}
+
+.simple-faq-answer p {
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-dark);
+}
