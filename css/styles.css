@@ -3546,4 +3546,61 @@ footer {
     line-height: 1.6;
     color: var(--text-dark);
 }
-
+@media (max-width: 768px) {
+    /* Fix for About Preview Image */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-image {
+        order: 1;
+    }
+    
+    .about-text {
+        order: 2;
+    }
+    
+    .image-frame {
+        height: 300px !important; /* Fixed height for mobile */
+        max-height: 300px !important;
+        width: 100%;
+    }
+    
+    .about-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    /* Fix for Visit Map */
+    .visit-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .visit-map {
+        height: 300px;
+        margin-top: 2rem;
+    }
+    
+    .map-container iframe {
+        height: 300px;
+    }
+    
+    /* Fix for Hero Section on mobile */
+    .hero {
+        min-height: 70vh;
+        height: auto;
+        padding: 120px 0 60px;
+    }
+    
+    /* Reduce padding on mobile */
+    .about-preview,
+    .events-preview,
+    .instagram-feed,
+    .visit-us {
+        padding: 3rem 0;
+    }
+}
