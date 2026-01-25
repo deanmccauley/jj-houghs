@@ -400,15 +400,36 @@ p {
     border-radius: 4px;
     box-shadow: var(--shadow-dark);
     overflow:hidden;
-    height: auto;
-    max-height: 500px;
+    width: 100%;
+    aspect-ratio: 4/3;
 }
 
 .about-img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     display: block;
-    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .image-frame {
+        border-width: 8px; /* Thinner border on mobile */
+        aspect-ratio: 16/9; /* Wider aspect ratio for mobile */
+        max-height: 300px; /* Limit height on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .image-frame {
+        border-width: 6px; /* Even thinner on very small screens */
+        aspect-ratio: 16/9;
+        max-height: 250px;
+    }
 }
 
 /* ========= EVENTS PREVIEW ========= */
