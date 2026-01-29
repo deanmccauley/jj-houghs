@@ -285,5 +285,25 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+// Diagnostic for About page hamburger
+console.log('=== ABOUT PAGE HAMBURGER DIAGNOSTIC ===');
+const toggle = document.getElementById('mobileToggle');
+console.log('1. Toggle element exists:', !!toggle);
+console.log('2. Toggle innerHTML:', toggle?.innerHTML);
+console.log('3. Toggle computed display:', toggle ? window.getComputedStyle(toggle).display : 'N/A');
+console.log('4. Window width:', window.innerWidth);
+console.log('5. Is mobile?', window.innerWidth <= 768);
+
+// Check CSS
+const style = window.getComputedStyle(toggle);
+console.log('6. All computed styles:', {
+    display: style.display,
+    visibility: style.visibility,
+    opacity: style.opacity,
+    width: style.width,
+    height: style.height
+});
+</script>
 </body>
 </html>

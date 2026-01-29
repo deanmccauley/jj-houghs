@@ -1017,6 +1017,7 @@ function setupSimpleFAQs() {
     console.log('FAQ setup complete');
 }
 
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     // Check if we're on events page
@@ -1025,3 +1026,4 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Simple FAQs initialized');
     }
 });
+console.log('=== END OF SCRIPT.JS ===');
