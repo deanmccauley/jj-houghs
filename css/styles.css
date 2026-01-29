@@ -35,6 +35,7 @@
 
 html {
     scroll-behavior: smooth;
+    max-width: 100%;
 }
 
 body {
@@ -43,6 +44,13 @@ body {
     background-color: #f9f7f2;
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100%;
+    
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .container {
@@ -181,6 +189,7 @@ p {
     list-style: none;
     gap: 2rem;
     align-items: center;
+
 }
 
 .nav-links li a {
@@ -222,12 +231,12 @@ p {
     color: var(--dark-color) !important;
 }
 
-.mobile-toggle {
+/**.mobile-toggle {
     display: none;
     font-size: 1.5rem;
     color: var(--light-color);
     cursor: pointer;
-}
+} **/
 
 /* ========= HERO SECTION ========= */
 .hero {
@@ -749,7 +758,7 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
+/**@media (max-width: 768px) {
     .mobile-toggle {
         display: block;
     }
@@ -807,12 +816,13 @@ footer {
         text-align: center;
         align-items: center;
     }
-}
+} **/
 
 @media (max-width: 480px) {
     .nav-container {
         padding: 1rem;
     }
+
     
     .hero-title {
         font-size: 2.5rem;
@@ -3547,3 +3557,102 @@ footer {
     color: var(--text-dark);
 }
 
+.hero img,
+.banner img,
+.header-image img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
+}
+/** #mobileToggle {
+  display: none;
+} **/
+
+@media (max-width: 768px) {
+  .hero,
+  .banner,
+  .header-image {
+    height: auto;
+  }
+
+  .hero img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  section,
+  .container,
+  .wrapper,
+  .grid,
+  .row {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+  .nav-links {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #111;
+  flex-direction: column;
+  padding: 1rem 0;
+  z-index: 999;
+
+  /* 👇 hide it properly */
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: 0.3s ease;
+}
+
+
+.nav-links.active {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+  .nav-links a {
+    padding: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+ /*** #mobileToggle {
+    display: block;
+  }***/
+}
+/* MOBILE TOGGLE */
+/* MOBILE TOGGLE */
+.mobile-toggle {
+  display: none;
+  font-size: 1.5rem;
+  color: var(--light-color);
+  cursor: pointer;
+
+  /* 👇 ADD THESE */
+  position: relative;
+  z-index: 99999 !important;
+  pointer-events: auto;
+
+  /* optional but recommended */
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SHOW TOGGLE ON MOBILE */
+@media (max-width: 768px) {
+  .mobile-toggle {
+    display: flex !important;
+  }
+}

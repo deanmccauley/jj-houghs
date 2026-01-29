@@ -1,20 +1,64 @@
+
+console.log('=== START OF SCRIPT.JS ===');
+
+
+
+// DEBUG: Check elements on page load
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('📱 DOM loaded - checking mobile elements:');
+    console.log('Mobile toggle:', document.getElementById('mobileToggle'));
+    console.log('Nav links:', document.getElementById('navLinks'));
+    console.log('Nav links classList:', document.getElementById('navLinks')?.classList);
+    
+    // Manually test the click event
+    const toggle = document.getElementById('mobileToggle');
+    if (toggle) {
+        console.log('✅ Mobile toggle found, adding event listener...');
+    }
+});
+
+// ========= EMAILJS CONFIGURATION =========
 // ========= EMAILJS CONFIGURATION =========
 window.EMAILJS_CONFIG = {
-    USER_ID: 'OAu2A8_bcxDNyZT7y',      // Your EmailJS User ID
-    SERVICE_ID: 'service_gq205g3',     // Your EmailJS Service ID
-    TEMPLATE_ID: 'template_ha8xxpf'    // Your NEW Template ID for JJ Hough's
+    USER_ID: 'OAu2A8_bcxDNyZT7y',
+    SERVICE_ID: 'service_gq205g3',
+    TEMPLATE_ID: 'template_ha8xxpf'
 };
 
-console.log('EmailJS Config:', window.EMAILJS_CONFIG);
+console.log('EmailJS Config loaded');
 
-// Initialize EmailJS
-if (window.EMAILJS_CONFIG.USER_ID) {
-    emailjs.init(window.EMAILJS_CONFIG.USER_ID);
-    console.log('EmailJS initialized with User ID:', window.EMAILJS_CONFIG.USER_ID);
-} else {
-    console.warn('EmailJS not initialized - missing User ID');
+// SAFE EmailJS initialization
+function initializeEmailJS() {
+    try {
+        if (typeof emailjs === 'undefined') {
+            console.warn('⚠️ EmailJS library not loaded yet');
+            return false;
+        }
+        
+        if (window.EMAILJS_CONFIG.USER_ID) {
+            emailjs.init(window.EMAILJS_CONFIG.USER_ID);
+            console.log('✅ EmailJS initialized');
+            return true;
+        } else {
+            console.warn('⚠️ EmailJS not initialized - missing User ID');
+            return false;
+        }
+    } catch (error) {
+        console.error('❌ EmailJS initialization error:', error);
+        return false;
+    }
 }
 
+// Initialize when EmailJS is ready
+if (typeof emailjs !== 'undefined') {
+    // EmailJS already loaded
+    initializeEmailJS();
+} else {
+    // Wait for EmailJS to load
+    window.addEventListener('load', function() {
+        setTimeout(initializeEmailJS, 1000);
+    });
+}
 // ========= GLOBAL FUNCTIONS =========
 
 // Mobile Navigation Toggle
@@ -23,6 +67,7 @@ const navLinks = document.getElementById('navLinks');
 
 if (mobileToggle && navLinks) {
     mobileToggle.addEventListener('click', () => {
+        console.log('hamburger clicked');
         navLinks.classList.toggle('active');
         mobileToggle.innerHTML = navLinks.classList.contains('active') 
             ? '<i class="fas fa-times"></i>' 
