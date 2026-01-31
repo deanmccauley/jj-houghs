@@ -975,10 +975,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Add at the VERY END of script.js (temporarily for debugging)
-console.log('Script loaded');
-console.log('FAQ items found:', document.querySelectorAll('.faq-item').length);
-console.log('Music FAQ section found:', document.querySelector('.music-faq') ? 'Yes' : 'No');
+
 
 
 // ========= SIMPLE FAQ FUNCTIONALITY =========
@@ -1026,4 +1023,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Simple FAQs initialized');
     }
 });
+
+
 console.log('=== END OF SCRIPT.JS ===');
